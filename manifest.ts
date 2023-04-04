@@ -17,7 +17,8 @@ const manifest: chrome.runtime.ManifestV3 = {
   },
   content_scripts: [
     {
-      matches: ["https://github.com/*"],
+      run_at: "document_start",
+      matches: ["https://github.com/*/*", "https://gist.github.com/*/*"],
       js: ["src/pages/content/index.js"],
     },
   ],
