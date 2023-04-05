@@ -3,8 +3,17 @@ import { createRoot } from "react-dom/client";
 import "@pages/popup/index.css";
 import Popup from "@pages/popup/Popup";
 import refreshOnUpdate from "virtual:reload-on-update-in-view";
+import { MantineProvider } from "@mantine/core";
 
 refreshOnUpdate("pages/popup");
+
+function App() {
+  return (
+    <MantineProvider withGlobalStyles withNormalizeCSS>
+      <Popup />
+    </MantineProvider>
+  );
+}
 
 function init() {
   const appContainer = document.querySelector("#app-container");
@@ -12,7 +21,7 @@ function init() {
     throw new Error("Can not find #app-container");
   }
   const root = createRoot(appContainer);
-  root.render(<Popup />);
+  root.render(<App />);
 }
 
 init();
